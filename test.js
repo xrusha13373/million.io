@@ -4,9 +4,9 @@ const answersArea = document.getElementById('answers');
 const scoreArea = document.getElementById('score-area');
 const scoreSpan = document.getElementById('score');
 const helpArea = document.getElementById('help-area');
-const timerSpan = document.getElementById('timer'); // Добавьте элемент <span id="timer"> в HTML
-const moneyArea = document.getElementById('money-area'); // Добавьте элемент <div id="money-area"> в HTML
-const moneySpan = document.getElementById('money'); // Добавьте элемент <span id="money"> в HTML
+const timerSpan = document.getElementById('timer'); 
+const moneyArea = document.getElementById('money-area'); 
+const moneySpan = document.getElementById('money'); 
 
 // База вопросов 
 const questions = [
@@ -100,7 +100,6 @@ const questions = [
         correctAnswer: 0,
         money: 300
     },
-    // ... другие вопросы
 ];
 
 let currentQuestion = 0;
@@ -162,12 +161,9 @@ function startTimer(seconds) {
 function checkAnswer(selectedAnswer) {
     clearInterval(timerInterval); // Останавливаем таймер при ответе
     if (selectedAnswer === questions[currentQuestion].correctAnswer) {
-        score++;
-        scoreSpan.textContent = score;
-        currentMoney += questions[currentQuestion].money; // Добавляем деньги
-        moneySpan.textContent = currentMoney;
         alert("Правильно!  Продолжаем...");
-        currentQuestion++;
+        // ОБНОВИТЬ currentQuestion  ЗДЕСЬ
+        currentQuestion++;  
         if (currentQuestion < questions.length) {
             displayQuestion(); // Отображаем следующий вопрос
         } else {
@@ -181,8 +177,6 @@ function checkAnswer(selectedAnswer) {
         currentQuestion = 0; // Возвращаемся к первому вопросу
         score = 0;          // Сбрасываем счет
         currentMoney = 0; // Сбрасываем деньги
-        scoreSpan.textContent = score;
-        moneySpan.textContent = currentMoney;
         displayQuestion();  // Отображаем первый вопрос
     }
 }
